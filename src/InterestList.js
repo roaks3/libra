@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import InterestListItem from './InterestListItem';
 
 const InterestList = ({ interests }) => {
@@ -14,6 +14,13 @@ const InterestList = ({ interests }) => {
       })}
     </ul>
   );
+};
+
+InterestList.propTypes = {
+  interests: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired).isRequired
 };
 
 export default InterestList;

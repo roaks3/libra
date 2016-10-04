@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import InterestGroupListItem from './InterestGroupListItem';
 
 const InterestGroupList = ({ interestGroups }) => {
@@ -14,6 +14,13 @@ const InterestGroupList = ({ interestGroups }) => {
       })}
     </ul>
   );
+};
+
+InterestGroupList.propTypes = {
+  interestGroups: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired).isRequired
 };
 
 export default InterestGroupList;

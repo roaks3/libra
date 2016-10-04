@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const InterestListItem = ({ interest }) => {
   return (
@@ -6,6 +6,12 @@ const InterestListItem = ({ interest }) => {
       {interest.name}
     </li>
   );
+};
+
+InterestListItem.propTypes = {
+  interest: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default InterestListItem;
