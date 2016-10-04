@@ -1,5 +1,5 @@
-import Interests from './sample-data/Interests';
-import InterestGroups from './sample-data/InterestGroups';
+import Interests from '../sample-data/Interests';
+import InterestGroups from '../sample-data/InterestGroups';
 
 let initialState = {
   interestGroups: InterestGroups.getAll(),

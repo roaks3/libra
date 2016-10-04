@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import InterestList from './InterestList'
+import InterestList from '../components/InterestList'
 
 const getInterestsForGroup = (interestGroup, interests) => {
   return interests.filter((interest) => interest.interestGroupId === interestGroup.id);

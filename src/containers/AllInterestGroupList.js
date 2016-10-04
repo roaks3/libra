@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import InterestGroupList from './InterestGroupList'
+import InterestGroupList from '../components/InterestGroupList'
 
 const mapStateToProps = (state) => ({
   interestGroups: state.interestGroups

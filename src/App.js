@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import AllInterestGroupList from './AllInterestGroupList';
+import AllInterestGroupList from './containers/AllInterestGroupList';
 
 class App extends Component {
   render() {

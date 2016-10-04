@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import InterestListForGroup from './InterestListForGroup';
+import InterestListForGroup from '../containers/InterestListForGroup';
 
 const InterestGroupListItem = ({ interestGroup }) => {
   return (
