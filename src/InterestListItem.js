@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 
 class InterestListItem extends Component {
+
   render() {
+  	const { interest } = this.props;
+
     return (
       <li>
-        {this.props.interest.name}
+        {interest.name}
       </li>
     );
   }
+
 }
 
 export default InterestListItem;

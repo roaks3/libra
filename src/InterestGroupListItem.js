@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import Interests from './sample-data/Interests';
-import InterestList from './InterestList';
+import InterestListForGroup from './InterestListForGroup';
 
 class InterestGroupListItem extends Component {
-  interestsForGroup (interestGroupId) {
-    return Interests
-      .getAll()
-      .filter((interest) => interest.interestGroupId === interestGroupId);
-  }
 
   render() {
+    const { interestGroup } = this.props;
+
     return (
       <li>
         <h1>
-          {this.props.interestGroup.name}
+          {interestGroup.name}
         </h1>
-        <InterestList
-          interests={this.interestsForGroup(this.props.interestGroup.id)}>
-        </InterestList>
+        <InterestListForGroup
+          interestGroup={interestGroup}
+        />
       </li>
     );
   }
+
 }
 
 export default InterestGroupListItem;

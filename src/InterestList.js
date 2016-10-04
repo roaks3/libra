@@ -2,20 +2,24 @@ import React, { Component } from 'react';
 import InterestListItem from './InterestListItem';
 
 class InterestList extends Component {
+
   render() {
+    const { interests } = this.props;
+
     return (
       <ul>
-        {this.props.interests.map((interest) => {
+        {interests.map((interest) => {
           return (
             <InterestListItem
               key={interest.id}
-              interest={interest}>
-            </InterestListItem>
+              interest={interest}
+            />
           );
         })}
       </ul>
     );
   }
+
 }
 
 export default InterestList;

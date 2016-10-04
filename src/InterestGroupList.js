@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
-import InterestGroups from './sample-data/InterestGroups';
 import InterestGroupListItem from './InterestGroupListItem';
 
 class InterestGroupList extends Component {
+
   render() {
+    const { interestGroups } = this.props;
+
     return (
       <ul className="interest-group-list">
-        {InterestGroups.getAll().map((interestGroup) => {
+        {interestGroups.map((interestGroup) => {
           return (
             <InterestGroupListItem
               key={interestGroup.id}
-              interestGroup={interestGroup}>
-            </InterestGroupListItem>
+              interestGroup={interestGroup}
+            />
           );
         })}
       </ul>
     );
   }
+
 }
 
 export default InterestGroupList;
