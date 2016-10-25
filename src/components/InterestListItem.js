@@ -1,17 +1,34 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
+import { logInterestEvent } from '../actions/interestEvents';
 
-const InterestListItem = ({ interest }) => {
-  return (
-    <li>
-      {interest.name}
-    </li>
-  );
-};
+class InterestListItem extends Component {
 
-InterestListItem.propTypes = {
-  interest: PropTypes.shape({
-    name: PropTypes.string.isRequired
-  }).isRequired
-};
+  static propTypes = {
+    interest: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  };
 
-export default InterestListItem;
+  handleClick = () => {
+    this.props.logInterestEvent(this.props.interest.id);
+  }
+
+  render () {
+    const { interest } = this.props;
+    return (
+      <li onClick={this.handleClick}>
+        {interest.name}
+      </li>
+    );
+  }
+
+}
+
+export default connect(
+  null,
+  {
+    logInterestEvent
+  }
+)(InterestListItem);

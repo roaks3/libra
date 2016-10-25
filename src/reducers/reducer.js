@@ -2,7 +2,8 @@ import * as ActionTypes from '../actions/actionTypes';
 
 let initialState = {
   interestGroups: [],
-  interests: []
+  interests: [],
+  successMessage: null
 };
 
 export default (state = initialState, action) => {
@@ -26,6 +27,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         interests: action.interests
+      };
+    case ActionTypes.LOG_INTEREST_EVENT_REQUEST:
+      return {
+        ...state,
+        successMessage: null
+      };
+    case ActionTypes.LOG_INTEREST_EVENT_SUCCESS:
+      let interest = state.interests.find(i => i.id === action.interestEvent.interestId);
+      return {
+        ...state,
+        successMessage: `Logged event: ${interest.name}`
       };
     default:
       return state;
