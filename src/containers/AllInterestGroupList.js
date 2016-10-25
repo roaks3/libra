@@ -30,12 +30,12 @@ class AllInterestGroupList extends Component {
 
 const mapStateToProps = (state) => ({
   interestGroups: state.interestGroups
-})
+});
 
 export default connect(
   mapStateToProps,
   {
-  	fetchInterestGroups,
-  	fetchInterests
+    fetchInterestGroups,
+    fetchInterests
   }
 )(AllInterestGroupList);
