@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { resourceUrl, options } from '../api';
 import {
   LOG_INTEREST_EVENT_REQUEST, LOG_INTEREST_EVENT_SUCCESS
@@ -15,11 +14,7 @@ const logInterestEventSuccess = (interestEvent) => ({
   interestEvent
 });
 
-export const logInterestEvent = (interestId) => dispatch => {
-  let interestEvent = {
-    interestId,
-    timestamp: moment().utc().format()
-  };
+export const logInterestEvent = (interestEvent) => dispatch => {
   dispatch(logInterestEventRequest());
   return fetch(resourceUrl(RESOURCE_NAME), {
       ...options,

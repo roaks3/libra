@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { logInterestEvent } from '../actions/interestEvents';
+import InterestEventForm from './InterestEventForm';
 
 class InterestListItem extends Component {
 
@@ -9,17 +10,39 @@ class InterestListItem extends Component {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired
-  };
+  }
 
-  handleClick = () => {
-    this.props.logInterestEvent(this.props.interest.id);
+  state = {
+    visible: false
+  }
+
+  handleClick = (e) => {
+    this.setState({ visible: !this.state.visible });
+  }
+
+  logEvent = (interestEvent) => {
+    this.props.logInterestEvent({ ...interestEvent, interestId: this.props.interest.id });
+    // TODO: Only close only on success
+    this.setState({ visible: false });
   }
 
   render () {
     const { interest } = this.props;
+
+    let form;
+    if (this.state.visible) {
+      form = <InterestEventForm onSubmit={this.logEvent} />
+    }
+
     return (
-      <li onClick={this.handleClick}>
-        {interest.name}
+      <li className="interest-list-item">
+        <button onClick={this.handleClick}>
+          +
+        </button>
+        <span>
+          {interest.name}
+        </span>
+        {form}
       </li>
     );
   }
