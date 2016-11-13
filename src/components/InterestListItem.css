@@ -1,0 +1,10 @@
+.interest-list-item {
+  background-color: #eeeeee;
+  border-top: 1px solid #fff;
+  padding: 10px 30px;
+}
+
+.interest-list-item span {
+  font-size: 14px;
+  padding-left: 10px;
+}

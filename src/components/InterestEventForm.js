@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment';
+import './InterestEventForm.css';
 
 class InterestEventForm extends Component {
 
@@ -34,7 +35,7 @@ class InterestEventForm extends Component {
 
   render () {
     return (
-      <form className="interest-event-form">
+      <form className="basic-form interest-event-form">
         <fieldset>
           <label>
             Completed at
@@ -67,6 +68,7 @@ class InterestEventForm extends Component {
           />
         </fieldset>
         <button
+          className="btn-primary"
           type="button"
           onClick={this.handleSubmit}>
           Log Event

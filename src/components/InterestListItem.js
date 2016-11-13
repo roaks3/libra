@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { logInterestEvent } from '../actions/interestEvents';
 import InterestEventForm from './InterestEventForm';
+import './InterestListItem.css';
 
 class InterestListItem extends Component {
 
@@ -36,7 +37,7 @@ class InterestListItem extends Component {
 
     return (
       <li className="interest-list-item">
-        <button onClick={this.handleClick}>
+        <button className="btn-weak" onClick={this.handleClick}>
           +
         </button>
         <span>

@@ -1,9 +1,12 @@
 .App {
-  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1170px;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
   height: 80px;
 }
 
@@ -12,9 +15,84 @@
   height: 150px;
   padding: 20px;
   color: white;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+button:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: 1px solid #32abeb;
+  color: #32abeb;
+  display: block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  border: 1px solid #8fd1f4;
+  color: #8fd1f4;
+}
+
+.btn-weak {
+  background-color: #bfccd6;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+  width: 30px;
+}
+
+.btn-weak:hover {
+  opacity: .8;
+}
+
+.basic-form {
+  padding: 10px 40px 20px;
+}
+
+.basic-form fieldset {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.basic-form label {
+  font-size: 12px;
+  width: 120px;
+}
+
+.basic-form input {
+  background-color: white;
+  border: none;
+  font-size: 14px;
+  font-weight: 200;
+  padding: 5px 10px;
+  width: 200px;
+}
+
+.basic-form .btn-primary {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .App {
+    width: 970px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .App {
+    width: 750px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    width: auto;
+  }
 }
