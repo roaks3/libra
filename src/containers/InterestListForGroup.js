@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import InterestList from '../components/InterestList';
 
 const getInterestsForGroup = (interestGroup, interests) => {
-  return interests.filter((interest) => interest.interestGroupId === interestGroup.id);
+  return interests.filter(interest => interest.interestGroupId === interestGroup.id);
 };
 
 const mapStateToProps = (state, ownProps) => ({
