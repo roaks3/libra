@@ -40,9 +40,9 @@ class InterestListItem extends Component {
         <button className="btn-weak" onClick={this.handleClick}>
           +
         </button>
-        <span>
+        <h2>
           {interest.name}
-        </span>
+        </h2>
         {form}
       </li>
     );
