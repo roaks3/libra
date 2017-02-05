@@ -9,7 +9,7 @@ class InterestEventForm extends Component {
   }
 
   state = {
-    completedAt: moment().minutes(0).seconds(0).utc().format(),
+    completedAt: moment().hours(-5).minutes(0).seconds(0).utc().format('YYYY-MM-DD'),
     duration: 1,
     fulfillment: 1
   }
@@ -29,7 +29,7 @@ class InterestEventForm extends Component {
   handleSubmit = e => {
     this.props.onSubmit({
       ...this.state,
-      completedAt: moment(this.state.completedAt).utc().format()
+      completedAt: moment(this.state.completedAt, 'YYYY-MM-DD').utc().format()
     });
   }
 
@@ -41,10 +41,10 @@ class InterestEventForm extends Component {
             Completed at
           </label>
           <input
-            type="datetime-local"
+            type="date"
             value={this.state.completedAt}
             onChange={this.handleCompletedAtChange}
-            placeholder="YYYY-MM-DDTHH:mm:ssZ"
+            placeholder="YYYY-MM-DD"
           />
         </fieldset>
         <fieldset>
