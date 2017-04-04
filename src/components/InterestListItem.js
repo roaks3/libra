@@ -37,12 +37,14 @@ class InterestListItem extends Component {
 
     return (
       <li className="interest-list-item">
-        <button className="btn-weak" onClick={this.handleClick}>
-          +
-        </button>
-        <h2>
-          {interest.name}
-        </h2>
+        <header>
+          <button className="btn-weak" onClick={this.handleClick}>
+            +
+          </button>
+          <h2>
+            {interest.name}
+          </h2>
+        </header>
         {form}
       </li>
     );

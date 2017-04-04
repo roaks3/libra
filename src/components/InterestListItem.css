@@ -4,6 +4,12 @@
   padding: 10px 30px;
 }
 
+.interest-list-item header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .interest-list-item h2 {
   font-size: 14px;
   padding-left: 10px;
