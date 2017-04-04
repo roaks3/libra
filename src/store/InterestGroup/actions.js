@@ -1,15 +1,15 @@
-import { resourceUrl, options } from '../api';
-import {
-  REQUEST_INTEREST_GROUPS, RECEIVE_INTEREST_GROUPS
-} from './actionTypes';
+import { resourceUrl, options } from '../../api';
 
 const RESOURCE_NAME = 'interestGroups';
+
+export const REQUEST_INTEREST_GROUPS = 'REQUEST_INTEREST_GROUPS';
+export const RECEIVE_INTEREST_GROUPS = 'RECEIVE_INTEREST_GROUPS';
 
 export const requestInterestGroups = () => ({
   type: REQUEST_INTEREST_GROUPS
 });
 
-export const receiveInterestGroups = (interestGroups) => ({
+export const receiveInterestGroups = interestGroups => ({
   type: RECEIVE_INTEREST_GROUPS,
   interestGroups
 });

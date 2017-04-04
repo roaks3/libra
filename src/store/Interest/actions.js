@@ -1,9 +1,9 @@
-import { resourceUrl, options } from '../api';
-import {
-  REQUEST_INTERESTS, RECEIVE_INTERESTS
-} from './actionTypes';
+import { resourceUrl, options } from '../../api';
 
 const RESOURCE_NAME = 'interests';
+
+export const REQUEST_INTERESTS = 'REQUEST_INTERESTS';
+export const RECEIVE_INTERESTS = 'RECEIVE_INTERESTS';
 
 export const requestInterests = () => ({
   type: REQUEST_INTERESTS

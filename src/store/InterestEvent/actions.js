@@ -1,9 +1,9 @@
-import { resourceUrl, options } from '../api';
-import {
-  LOG_INTEREST_EVENT_REQUEST, LOG_INTEREST_EVENT_SUCCESS
-} from './actionTypes';
+import { resourceUrl, options } from '../../api';
 
 const RESOURCE_NAME = 'interestEvents';
+
+export const LOG_INTEREST_EVENT_REQUEST = 'LOG_INTEREST_EVENT_REQUEST';
+export const LOG_INTEREST_EVENT_SUCCESS = 'LOG_INTEREST_EVENT_SUCCESS';
 
 const logInterestEventRequest = () => ({
   type: LOG_INTEREST_EVENT_REQUEST

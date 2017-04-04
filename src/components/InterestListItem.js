@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
-import { logInterestEvent } from '../actions/interestEvents';
+import { logInterestEvent } from '../store/InterestEvent/actions';
 import InterestEventForm from './InterestEventForm';
 import './InterestListItem.css';
 

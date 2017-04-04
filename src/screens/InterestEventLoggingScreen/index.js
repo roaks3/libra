@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import InterestGroupList from '../../components/InterestGroupList';
-import { fetchInterestGroups } from '../../actions/interestGroups';
-import { fetchInterests } from '../../actions/interests';
+import { fetchInterestGroups } from '../../store/InterestGroup/actions';
+import { fetchInterests } from '../../store/Interest/actions';
 
 class InterestEventLoggingScreen extends Component {
   static propTypes = {
