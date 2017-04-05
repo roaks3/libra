@@ -1,0 +1,31 @@
+.lb-LineChart {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  padding: 0 1px;
+}
+
+.lb-LineChart-value-none,
+.lb-LineChart-value-low,
+.lb-LineChart-value-medium,
+.lb-LineChart-value-high {
+  margin: 1px;
+  height: 10px;
+  width: 10px;
+}
+
+.lb-LineChart-value-none {
+  background-color: #eee;
+}
+
+.lb-LineChart-value-low {
+  background-color: #c6e48b;
+}
+
+.lb-LineChart-value-medium {
+  background-color: #7bc96f;
+}
+
+.lb-LineChart-value-high {
+  background-color: #239a3b;
+}

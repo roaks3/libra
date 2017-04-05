@@ -1,0 +1,14 @@
+.lb-LineChartMonthLabel {
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+  padding: 0 1px;
+}
+
+.lb-LineChartMonthLabel-day {
+  font-size: 9px;
+  height: 10px;
+  margin: 1px;
+  text-transform: uppercase;
+  width: 10px;
+}

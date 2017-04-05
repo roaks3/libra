@@ -3,12 +3,14 @@ import { connect } from 'react-redux';
 import InterestGroupList from '../../components/InterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
 import { fetchInterests } from '../../store/Interest/actions';
+import { fetchInterestEvents } from '../../store/InterestEvent/actions';
 
 class InterestEventLoggingScreen extends Component {
   static propTypes = {
     successMessage: PropTypes.string,
     fetchInterestGroups: PropTypes.func.isRequired,
     fetchInterests: PropTypes.func.isRequired,
+    fetchInterestEvents: PropTypes.func.isRequired,
     interestGroups: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
@@ -18,6 +20,7 @@ class InterestEventLoggingScreen extends Component {
   componentWillMount() {
     this.props.fetchInterestGroups();
     this.props.fetchInterests();
+    this.props.fetchInterestEvents();
   }
 
   render () {
@@ -43,6 +46,7 @@ export default connect(
   mapStateToProps,
   {
     fetchInterestGroups,
-    fetchInterests
+    fetchInterests,
+    fetchInterestEvents
   }
 )(InterestEventLoggingScreen);

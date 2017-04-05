@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { logInterestEvent } from '../store/InterestEvent/actions';
 import InterestEventForm from './InterestEventForm';
+import BudgetDetailsForInterest from '../containers/BudgetDetailsForInterest';
 import './InterestListItem.css';
 
 class InterestListItem extends Component {
@@ -44,6 +45,9 @@ class InterestListItem extends Component {
           <h2>
             {interest.name}
           </h2>
+          <BudgetDetailsForInterest
+            interest={interest}
+          />
         </header>
         {form}
       </li>

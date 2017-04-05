@@ -13,4 +13,9 @@
 .interest-list-item h2 {
   font-size: 14px;
   padding-left: 10px;
+  width: 180px;
+}
+
+.interest-list-item .lb-BudgetDetails {
+  opacity: .6;
 }

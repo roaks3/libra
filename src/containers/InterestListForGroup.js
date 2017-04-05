@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { getInterestsForGroup } from '../store/Interest/selectors';
+import { selectInterestsForGroup } from '../store/Interest/selectors';
 import InterestList from '../components/InterestList';
 
 const mapStateToProps = (state, ownProps) => ({
-  interests: getInterestsForGroup(state, ownProps)
+  interests: selectInterestsForGroup(state, ownProps)
 });
 
 const InterestListForGroup = connect(

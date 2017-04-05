@@ -3,7 +3,13 @@
   margin: 10px 0;
 }
 
+.interest-group-list-item header {
+  align-items: center;
+  display: flex;
+}
+
 .interest-group-list-item h1 {
   font-size: 14px;
   padding: 15px 30px;
+  width: 240px;
 }
