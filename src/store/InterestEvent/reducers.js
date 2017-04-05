@@ -26,10 +26,9 @@ export default (state = initialState, action) => {
         successMessage: null
       };
     case LOG_INTEREST_EVENT_SUCCESS:
-      const interest = state.interests.find(i => i.id === action.interestEvent.interestId);
       return {
         interestEvents: [...state.interestEvents, action.interestEvent],
-        successMessage: `Logged event: ${interest.name}`
+        successMessage: `Logged event: ${action.interest.name}`
       };
     default:
       return state;

@@ -23,7 +23,7 @@ class InterestListItem extends Component {
   }
 
   logEvent = (interestEvent) => {
-    this.props.logInterestEvent({ ...interestEvent, interestId: this.props.interest.id });
+    this.props.logInterestEvent({ ...interestEvent, interestId: this.props.interest.id }, this.props.interest);
     // TODO: Only close only on success
     this.setState({ visible: false });
   }

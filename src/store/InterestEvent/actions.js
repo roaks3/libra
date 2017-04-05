@@ -11,7 +11,7 @@ export const requestInterestEvents = () => ({
   type: REQUEST_INTEREST_EVENTS
 });
 
-export const receiveInterestEvents = (interestEvents) => ({
+export const receiveInterestEvents = interestEvents => ({
   type: RECEIVE_INTEREST_EVENTS,
   interestEvents
 });
@@ -27,12 +27,13 @@ const logInterestEventRequest = () => ({
   type: LOG_INTEREST_EVENT_REQUEST
 });
 
-const logInterestEventSuccess = (interestEvent) => ({
+const logInterestEventSuccess = (interestEvent, interest) => ({
   type: LOG_INTEREST_EVENT_SUCCESS,
-  interestEvent
+  interestEvent,
+  interest
 });
 
-export const logInterestEvent = (interestEvent) => dispatch => {
+export const logInterestEvent = (interestEvent, interest) => dispatch => {
   dispatch(logInterestEventRequest());
   return fetch(resourceUrl(RESOURCE_NAME), {
       ...options,
@@ -40,6 +41,6 @@ export const logInterestEvent = (interestEvent) => dispatch => {
       body: JSON.stringify(interestEvent)
     })
     .then(() => {
-      dispatch(logInterestEventSuccess(interestEvent));
+      dispatch(logInterestEventSuccess(interestEvent, interest));
     });
 };
