@@ -5,11 +5,12 @@ import './InterestEventForm.css';
 class InterestEventForm extends Component {
 
   static propTypes = {
+    defaultCompletedAt: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
   }
 
   state = {
-    completedAt: moment().hours(-5).minutes(0).seconds(0).utc().format('YYYY-MM-DD'),
+    completedAt: moment(this.props.defaultCompletedAt).utc().format('YYYY-MM-DD'),
     duration: 1,
     fulfillment: 1
   }

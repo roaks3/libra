@@ -1,9 +1,10 @@
+import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import InterestGroupList from '../../components/InterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
 import { fetchInterests } from '../../store/Interest/actions';
-import { fetchInterestEvents } from '../../store/InterestEvent/actions';
+import { fetchInterestEvents, incrementDefautInterestEventCompletedAt } from '../../store/InterestEvent/actions';
 
 class InterestEventLoggingScreen extends Component {
   static propTypes = {
@@ -26,6 +27,13 @@ class InterestEventLoggingScreen extends Component {
   render () {
     return (
       <section>
+        {
+          this.props.defautInterestEventCompletedAt && (
+            <button onClick={this.props.incrementDefautInterestEventCompletedAt}>
+              {moment(this.props.defautInterestEventCompletedAt).utc().format('ddd MM-DD')} - Next Day
+            </button>
+          )
+        }
         <p>
           {this.props.successMessage}
         </p>
@@ -38,6 +46,7 @@ class InterestEventLoggingScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  defautInterestEventCompletedAt: state.interestEvents.defautInterestEventCompletedAt,
   successMessage: state.interestEvents.successMessage,
   interestGroups: state.interestGroups
 });
@@ -47,6 +56,7 @@ export default connect(
   {
     fetchInterestGroups,
     fetchInterests,
-    fetchInterestEvents
+    fetchInterestEvents,
+    incrementDefautInterestEventCompletedAt
   }
 )(InterestEventLoggingScreen);

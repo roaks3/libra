@@ -29,11 +29,16 @@ class InterestListItem extends Component {
   }
 
   render () {
-    const { interest } = this.props;
+    const { interest, defautInterestEventCompletedAt } = this.props;
 
     let form;
     if (this.state.visible) {
-      form = <InterestEventForm onSubmit={this.logEvent} />
+      form = (
+        <InterestEventForm
+          defaultCompletedAt={defautInterestEventCompletedAt}
+          onSubmit={this.logEvent}
+        />
+      )
     }
 
     return (
@@ -56,8 +61,12 @@ class InterestListItem extends Component {
 
 }
 
+const mapStateToProps = state => ({
+  defautInterestEventCompletedAt: state.interestEvents.defautInterestEventCompletedAt
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     logInterestEvent
   }
