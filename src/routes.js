@@ -1,7 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router';
-import App from './App';
+import AppHeader from './components/AppHeader';
+import InterestEventLoggingScreen from './screens/InterestEventLoggingScreen';
+import './App.css';
 
 export default (
-  <Route exact path="/" component={App}/>
+  <div className="App">
+    <AppHeader />
+    <Route exact path="/" component={InterestEventLoggingScreen} />
+  </div>
 );
