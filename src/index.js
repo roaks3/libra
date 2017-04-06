@@ -1,22 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk'
-import mainReducer from './store/reducer.js';
-import App from './App';
+
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter } from 'react-router-redux';
+
+import configureStore from './store';
+import Routes from './routes';
 import './index.css';
 
-const middleware = [ thunk ];
-
-const store = createStore(
-  mainReducer,
-  applyMiddleware(...middleware)
-);
+const history = createHistory();
+const store = configureStore(history);
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectedRouter history={history}>
+      <div>
+        {Routes}
+      </div>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );
