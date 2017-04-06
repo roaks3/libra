@@ -46,8 +46,8 @@ class InterestEventLoggingScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  defautInterestEventCompletedAt: state.interestEvents.defautInterestEventCompletedAt,
-  successMessage: state.interestEvents.successMessage,
+  defautInterestEventCompletedAt: state.interestEvent.defautInterestEventCompletedAt,
+  successMessage: state.interestEvent.successMessage,
   interestGroups: state.interestGroups
 });
 

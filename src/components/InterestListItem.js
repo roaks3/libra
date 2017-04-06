@@ -62,7 +62,7 @@ class InterestListItem extends Component {
 }
 
 const mapStateToProps = state => ({
-  defautInterestEventCompletedAt: state.interestEvents.defautInterestEventCompletedAt
+  defautInterestEventCompletedAt: state.interestEvent.defautInterestEventCompletedAt
 });
 
 export default connect(
