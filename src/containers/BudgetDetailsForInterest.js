@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { selectInterestEventsForInterest } from '../store/InterestEvent/selectors';
+import { getInterestEventsForInterest } from '../store/InterestEvent/selectors';
 import BudgetDetails from '../components/BudgetDetails';
 
 const mapStateToProps = (state, ownProps) => ({
-  interestEvents: selectInterestEventsForInterest(state, ownProps)
+  interestEvents: getInterestEventsForInterest(state, ownProps)
 });
 
 const BudgetDetailsForInterest = connect(
