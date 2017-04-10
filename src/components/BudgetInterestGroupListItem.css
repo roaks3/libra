@@ -1,14 +1,14 @@
-.interest-group-list-item {
+.lb-BudgetInterestGroupListItem {
   background-color: #dddddd;
   margin: 10px 0;
 }
 
-.interest-group-list-item header {
+.lb-BudgetInterestGroupListItem header {
   align-items: center;
   display: flex;
 }
 
-.interest-group-list-item h1 {
+.lb-BudgetInterestGroupListItem h1 {
   font-size: 14px;
   padding: 15px 30px;
   width: 240px;

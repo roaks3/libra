@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react';
 import BudgetDetailsForInterestGroup from '../containers/BudgetDetailsForInterestGroup';
-import InterestListForGroup from '../containers/InterestListForGroup';
-import './InterestGroupListItem.css';
+import BudgetInterestListForGroup from '../containers/BudgetInterestListForGroup';
+import './BudgetInterestGroupListItem.css';
 
-const InterestGroupListItem = ({ interestGroup }) => {
+const BudgetInterestGroupListItem = ({ interestGroup }) => {
   return (
-    <li className="interest-group-list-item">
+    <li className="lb-BudgetInterestGroupListItem">
       <header>
         <h1>
           {interestGroup.name}
@@ -14,17 +14,17 @@ const InterestGroupListItem = ({ interestGroup }) => {
           interestGroup={interestGroup}
         />
       </header>
-      <InterestListForGroup
+      <BudgetInterestListForGroup
         interestGroup={interestGroup}
       />
     </li>
   );
 };
 
-InterestGroupListItem.propTypes = {
+BudgetInterestGroupListItem.propTypes = {
   interestGroup: PropTypes.shape({
     name: PropTypes.string.isRequired
   }).isRequired
 };
 
-export default InterestGroupListItem;
+export default BudgetInterestGroupListItem;

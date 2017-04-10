@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { logInterestEvent } from '../store/InterestEvent/actions';
 import InterestEventForm from './InterestEventForm';
 import BudgetDetailsForInterest from '../containers/BudgetDetailsForInterest';
-import './InterestListItem.css';
+import './BudgetInterestListItem.css';
 
-class InterestListItem extends Component {
+// TODO: Consider breaking this up into a component and container, because
+// I keep getting confused by where to find thigs with this
+class BudgetInterestListItem extends Component {
 
   static propTypes = {
     interest: PropTypes.shape({
@@ -22,7 +24,7 @@ class InterestListItem extends Component {
     this.setState({ visible: !this.state.visible });
   }
 
-  logEvent = (interestEvent) => {
+  logEvent = interestEvent => {
     this.props.logInterestEvent({ ...interestEvent, interestId: this.props.interest.id }, this.props.interest);
     // TODO: Only close only on success
     this.setState({ visible: false });
@@ -42,7 +44,7 @@ class InterestListItem extends Component {
     }
 
     return (
-      <li className="interest-list-item">
+      <li className="lb-BudgetInterestListItem">
         <header>
           <button className="btn-weak" onClick={this.handleClick}>
             +
@@ -70,4 +72,4 @@ export default connect(
   {
     logInterestEvent
   }
-)(InterestListItem);
+)(BudgetInterestListItem);

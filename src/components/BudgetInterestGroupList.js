@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react';
-import InterestGroupListItem from './InterestGroupListItem';
+import BudgetInterestGroupListItem from './BudgetInterestGroupListItem';
 
-const InterestGroupList = ({ interestGroups }) => {
+const BudgetInterestGroupList = ({ interestGroups }) => {
   return (
     <ul className="interest-group-list">
-      {interestGroups.map((interestGroup) => {
+      {interestGroups.map(interestGroup => {
         return (
-          <InterestGroupListItem
+          <BudgetInterestGroupListItem
             key={interestGroup.id}
             interestGroup={interestGroup}
           />
@@ -16,11 +16,11 @@ const InterestGroupList = ({ interestGroups }) => {
   );
 };
 
-InterestGroupList.propTypes = {
+BudgetInterestGroupList.propTypes = {
   interestGroups: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired).isRequired
 };
 
-export default InterestGroupList;
+export default BudgetInterestGroupList;

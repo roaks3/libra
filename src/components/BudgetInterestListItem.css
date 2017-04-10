@@ -1,21 +1,21 @@
-.interest-list-item {
+.lb-BudgetInterestListItem {
   background-color: #eeeeee;
   border-top: 1px solid #fff;
   padding: 10px 30px;
 }
 
-.interest-list-item header {
+.lb-BudgetInterestListItem header {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
 }
 
-.interest-list-item h2 {
+.lb-BudgetInterestListItem h2 {
   font-size: 14px;
   padding-left: 10px;
   width: 180px;
 }
 
-.interest-list-item .lb-BudgetDetails {
+.lb-BudgetInterestListItem .lb-BudgetDetails {
   opacity: .6;
 }

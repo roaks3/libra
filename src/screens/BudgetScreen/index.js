@@ -1,12 +1,12 @@
 import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import InterestGroupList from '../../components/InterestGroupList';
+import BudgetInterestGroupList from '../../components/BudgetInterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
 import { fetchInterests } from '../../store/Interest/actions';
 import { fetchInterestEvents, incrementDefautInterestEventCompletedAt } from '../../store/InterestEvent/actions';
 
-class InterestEventLoggingScreen extends Component {
+class BudgetScreen extends Component {
   static propTypes = {
     successMessage: PropTypes.string,
     fetchInterestGroups: PropTypes.func.isRequired,
@@ -37,7 +37,7 @@ class InterestEventLoggingScreen extends Component {
         <p>
           {this.props.successMessage}
         </p>
-        <InterestGroupList
+        <BudgetInterestGroupList
           interestGroups={this.props.interestGroups}
         />
       </section>
@@ -59,4 +59,4 @@ export default connect(
     fetchInterestEvents,
     incrementDefautInterestEventCompletedAt
   }
-)(InterestEventLoggingScreen);
+)(BudgetScreen);
