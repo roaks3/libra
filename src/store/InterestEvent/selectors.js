@@ -1,5 +1,9 @@
 import { getInterestsForGroup } from '../Interest/selectors';
 
+export const getAllInterestEvents = (state, props) => {
+  return [...state.interestEvent.interestEvents];
+};
+
 export const getInterestEventsForInterest = (state, props) => {
   return state.interestEvent.interestEvents.filter(interestEvent => interestEvent.interestId === props.interest.id);
 };

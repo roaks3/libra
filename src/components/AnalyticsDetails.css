@@ -1,0 +1,37 @@
+.lb-AnalyticsDetails {
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  padding-left: 20px;
+  width: 870px;
+}
+
+.lb-BudgetDetails-fulfill-value {
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.lb-AnalyticsDetails-fulfill-low {
+  background-color: #c6e48b;
+}
+
+.lb-AnalyticsDetails-fulfill-medium {
+  background-color: #7bc96f;
+}
+
+.lb-AnalyticsDetails-fulfill-high {
+  background-color: #239a3b;
+}
+
+.lb-BudgetDetails-time-value {
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.lb-AnalyticsDetails-time-warning {
+  color: orange;
+}
+
+.lb-AnalyticsDetails-time-danger {
+  color: red;
+}

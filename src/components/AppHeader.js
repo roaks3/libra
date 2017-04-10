@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../logo.svg';
 import './AppHeader.css';
 
@@ -7,8 +8,14 @@ const AppHeader = () => {
     <div className="lb-AppHeader">
       <img src={logo} className="lb-AppHeader-logo" alt="logo" />
       <h2>
-        Welcome to React
+        Libra
       </h2>
+      <Link to="/" className="lb-AppHeader-link">
+        Budgeting
+      </Link>
+      <Link to="/analytics" className="lb-AppHeader-link">
+        Analytics
+      </Link>
     </div>
   );
 };
