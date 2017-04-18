@@ -11,6 +11,7 @@ const AnalyticsInterestGroupListItem = ({ interestGroup }) => {
         </h1>
         <AnalyticsDetailsForInterestGroup
           interestGroup={interestGroup}
+          numDays={42}
         />
       </header>
     </li>

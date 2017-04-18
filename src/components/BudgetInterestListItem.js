@@ -54,6 +54,7 @@ class BudgetInterestListItem extends Component {
           </h2>
           <BudgetDetailsForInterest
             interest={interest}
+            numDays={28}
           />
         </header>
         {form}

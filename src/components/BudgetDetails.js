@@ -1,16 +1,9 @@
 import React, { PropTypes } from 'react';
-import moment from 'moment';
 import InterestEventLineChart from './InterestEventLineChart.js';
 import './BudgetDetails.css';
 
-const NUM_DAYS = 28;
-
-const BudgetDetails = ({ interestEvents }) => {
-  const interestEventsWithinNumDays = interestEvents.filter(interestEvent => {
-    return moment().diff(moment(interestEvent.completedAt), 'days') < NUM_DAYS;
-  });
-
-  const fulfillmentTotal = interestEventsWithinNumDays.reduce((sum, event) => sum + event.fulfillment, 0);
+const BudgetDetails = ({ interestEvents, startAt, endAt }) => {
+  const fulfillmentTotal = interestEvents.reduce((sum, event) => sum + event.fulfillment, 0);
   let fulfillmentLevel = 'none';
   if (fulfillmentTotal >= 30) {
     fulfillmentLevel = 'high';
@@ -20,7 +13,7 @@ const BudgetDetails = ({ interestEvents }) => {
     fulfillmentLevel = 'low';
   }
 
-  const hourTotal = interestEventsWithinNumDays.reduce((sum, event) => sum + event.duration, 0);
+  const hourTotal = interestEvents.reduce((sum, event) => sum + event.duration, 0);
 
   return (
     <div className="lb-BudgetDetails">
@@ -38,7 +31,8 @@ const BudgetDetails = ({ interestEvents }) => {
       </div>
       <InterestEventLineChart
         interestEvents={interestEvents}
-        numDays={NUM_DAYS}
+        startAt={startAt}
+        endAt={endAt}
       />
     </div>
   );
@@ -49,7 +43,9 @@ BudgetDetails.propTypes = {
     completedAt:PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
     fulfillment: PropTypes.number.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  startAt: PropTypes.string.isRequired,
+  endAt: PropTypes.string
 };
 
 export default BudgetDetails;

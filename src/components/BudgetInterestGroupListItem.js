@@ -12,6 +12,7 @@ const BudgetInterestGroupListItem = ({ interestGroup }) => {
         </h1>
         <BudgetDetailsForInterestGroup
           interestGroup={interestGroup}
+          numDays={28}
         />
       </header>
       <BudgetInterestListForGroup

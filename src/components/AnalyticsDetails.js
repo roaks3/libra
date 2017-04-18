@@ -1,20 +1,9 @@
 import React, { PropTypes } from 'react';
-import moment from 'moment';
 import InterestEventLineChart from './InterestEventLineChart.js';
 import './AnalyticsDetails.css';
 
-const NUM_DAYS = 42;
-
-const AnalyticsDetails = ({ allInterestEvents, interestEvents }) => {
-  const interestEventsWithinNumDays = interestEvents.filter(interestEvent => {
-    return moment().diff(moment(interestEvent.completedAt), 'days') < NUM_DAYS;
-  });
-
-  const allInterestEventsWithinNumDays = allInterestEvents.filter(interestEvent => {
-    return moment().diff(moment(interestEvent.completedAt), 'days') < NUM_DAYS;
-  });
-
-  const fulfillmentTotal = interestEventsWithinNumDays.reduce((sum, event) => sum + event.fulfillment, 0);
+const AnalyticsDetails = ({ allInterestEvents, interestEvents, startAt, endAt }) => {
+  const fulfillmentTotal = interestEvents.reduce((sum, event) => sum + event.fulfillment, 0);
   let fulfillmentLevel = 'none';
   if (fulfillmentTotal >= 30) {
     fulfillmentLevel = 'high';
@@ -24,9 +13,9 @@ const AnalyticsDetails = ({ allInterestEvents, interestEvents }) => {
     fulfillmentLevel = 'low';
   }
 
-  const hourTotal = interestEventsWithinNumDays.reduce((sum, event) => sum + event.duration, 0);
+  const hourTotal = interestEvents.reduce((sum, event) => sum + event.duration, 0);
   const hourTotalAllInterests =
-    allInterestEventsWithinNumDays.reduce((sum, event) => sum + event.duration, 0);
+    allInterestEvents.reduce((sum, event) => sum + event.duration, 0);
   const hourPercent = hourTotal * 100 / hourTotalAllInterests;
   let hourDanger = 'none';
   if (hourPercent < 10) {
@@ -51,7 +40,8 @@ const AnalyticsDetails = ({ allInterestEvents, interestEvents }) => {
       </div>
       <InterestEventLineChart
         interestEvents={interestEvents}
-        numDays={NUM_DAYS}
+        startAt={startAt}
+        endAt={endAt}
       />
     </div>
   );
@@ -67,7 +57,9 @@ AnalyticsDetails.propTypes = {
     completedAt:PropTypes.string.isRequired,
     duration: PropTypes.number.isRequired,
     fulfillment: PropTypes.number.isRequired
-  }).isRequired).isRequired
+  }).isRequired).isRequired,
+  startAt: PropTypes.string.isRequired,
+  endAt: PropTypes.string
 };
 
 export default AnalyticsDetails;
