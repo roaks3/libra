@@ -1,6 +1,33 @@
 import React, { PropTypes } from 'react';
 import InterestEventLineChart from './InterestEventLineChart.js';
-import './BudgetDetails.css';
+import { StyleSheet, css } from 'aphrodite/no-important';
+
+const styles = StyleSheet.create({
+  budgetDetails: {
+    display: 'flex',
+    fontSize: '14px',
+    justifyContent: 'space-between',
+    paddingLeft: '20px',
+    width: '870px'
+  },
+
+  statValue: {
+    fontSize: '20px',
+    padding: '0 5px'
+  },
+
+  low: {
+    backgroundColor: '#c6e48b'
+  },
+
+  medium: {
+    backgroundColor: '#7bc96f'
+  },
+
+  high: {
+    backgroundColor: '#239a3b'
+  }
+});
 
 const BudgetDetails = ({ interestEvents, startAt, endAt }) => {
   const fulfillmentTotal = interestEvents.reduce((sum, event) => sum + event.fulfillment, 0);
@@ -16,15 +43,15 @@ const BudgetDetails = ({ interestEvents, startAt, endAt }) => {
   const hourTotal = interestEvents.reduce((sum, event) => sum + event.duration, 0);
 
   return (
-    <div className="lb-BudgetDetails">
-      <div className={'lb-BudgetDetails-fulfill-' + fulfillmentLevel}>
-        <span className="lb-BudgetDetails-fulfill-value">
+    <div className={css(styles.budgetDetails)}>
+      <div className={css(styles[fulfillmentLevel])}>
+        <span className={css(styles.statValue)}>
           {fulfillmentTotal}
         </span>
         pts
       </div>
-      <div className="lb-BudgetDetails-time">
-        <span className="lb-BudgetDetails-time-value">
+      <div>
+        <span className={css(styles.statValue)}>
           {hourTotal}
         </span>
         hr

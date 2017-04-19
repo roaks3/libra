@@ -25,7 +25,7 @@ const InterestEventLineChart = ({ interestEvents, startAt, endAt }) => {
     .reverse();
 
   return (
-    <div className="lb-InterestEventLineChart">
+    <div>
       <LineChartMonthLabel
         utcDateStrings={utcDateStrings}
       />

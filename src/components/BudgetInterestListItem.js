@@ -3,7 +3,31 @@ import { connect } from 'react-redux';
 import { logInterestEvent } from '../store/InterestEvent/actions';
 import InterestEventForm from './InterestEventForm';
 import BudgetDetailsForInterest from '../containers/BudgetDetailsForInterest';
-import './BudgetInterestListItem.css';
+import { StyleSheet, css } from 'aphrodite/no-important';
+
+const styles = StyleSheet.create({
+  listItem: {
+    backgroundColor: '#eeeeee',
+    borderTop: '1px solid #fff',
+    padding: '10px 30px'
+  },
+
+  header: {
+    alignItems: 'center',
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+
+  name: {
+    fontSize: '14px',
+    paddingLeft: '10px',
+    width: '180px'
+  },
+
+  details: {
+    opacity: .6
+  }
+});
 
 // TODO: Consider breaking this up into a component and container, because
 // I keep getting confused by where to find thigs with this
@@ -44,18 +68,20 @@ class BudgetInterestListItem extends Component {
     }
 
     return (
-      <li className="lb-BudgetInterestListItem">
-        <header>
+      <li className={css(styles.listItem)}>
+        <header className={css(styles.header)}>
           <button className="btn-weak" onClick={this.handleClick}>
             +
           </button>
-          <h2>
+          <h2 className={css(styles.name)}>
             {interest.name}
           </h2>
-          <BudgetDetailsForInterest
-            interest={interest}
-            numDays={28}
-          />
+          <div className={css(styles.details)}>
+            <BudgetDetailsForInterest
+              interest={interest}
+              numDays={28}
+            />
+          </div>
         </header>
         {form}
       </li>

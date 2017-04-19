@@ -1,6 +1,13 @@
 import React, { PropTypes, Component } from 'react';
 import moment from 'moment';
-import './InterestEventForm.css';
+import { StyleSheet, css } from 'aphrodite/no-important';
+
+const styles = StyleSheet.create({
+  form: {
+    borderTop: '1px solid #fff',
+    marginTop: '10px'
+  }
+});
 
 class InterestEventForm extends Component {
 
@@ -36,7 +43,7 @@ class InterestEventForm extends Component {
 
   render () {
     return (
-      <form className="basic-form interest-event-form">
+      <form className={'basic-form ' + css(styles.form)}>
         <fieldset>
           <label>
             Completed at
