@@ -22,7 +22,13 @@ export const fetchInterestEvents = () => dispatch => {
   dispatch(requestInterestEvents());
   return fetch(resourceUrl(RESOURCE_NAME), options)
     .then(response => response.json())
-    .then(json => dispatch(receiveInterestEvents(json.map(post => Object.assign(post, {id: post._id.$oid})))));
+    .then(json =>
+      dispatch(
+        receiveInterestEvents(
+          json.map(post => Object.assign(post, { id: post._id.$oid }))
+        )
+      )
+    );
 };
 
 const logInterestEventRequest = () => ({
@@ -38,13 +44,12 @@ const logInterestEventSuccess = (interestEvent, interest) => ({
 export const logInterestEvent = (interestEvent, interest) => dispatch => {
   dispatch(logInterestEventRequest());
   return fetch(resourceUrl(RESOURCE_NAME), {
-      ...options,
-      method: 'POST',
-      body: JSON.stringify(interestEvent)
-    })
-    .then(() => {
-      dispatch(logInterestEventSuccess(interestEvent, interest));
-    });
+    ...options,
+    method: 'POST',
+    body: JSON.stringify(interestEvent)
+  }).then(() => {
+    dispatch(logInterestEventSuccess(interestEvent, interest));
+  });
 };
 
 export const incrementDefautInterestEventCompletedAt = () => ({

@@ -37,8 +37,16 @@ const styles = StyleSheet.create({
   }
 });
 
-const AnalyticsDetails = ({ allInterestEvents, interestEvents, startAt, endAt }) => {
-  const fulfillmentTotal = interestEvents.reduce((sum, event) => sum + event.fulfillment, 0);
+const AnalyticsDetails = ({
+  allInterestEvents,
+  interestEvents,
+  startAt,
+  endAt
+}) => {
+  const fulfillmentTotal = interestEvents.reduce(
+    (sum, event) => sum + event.fulfillment,
+    0
+  );
   let fulfillmentLevel = 'none';
   if (fulfillmentTotal >= 30) {
     fulfillmentLevel = 'high';
@@ -48,9 +56,14 @@ const AnalyticsDetails = ({ allInterestEvents, interestEvents, startAt, endAt })
     fulfillmentLevel = 'low';
   }
 
-  const hourTotal = interestEvents.reduce((sum, event) => sum + event.duration, 0);
-  const hourTotalAllInterests =
-    allInterestEvents.reduce((sum, event) => sum + event.duration, 0);
+  const hourTotal = interestEvents.reduce(
+    (sum, event) => sum + event.duration,
+    0
+  );
+  const hourTotalAllInterests = allInterestEvents.reduce(
+    (sum, event) => sum + event.duration,
+    0
+  );
   const hourPercent = hourTotal * 100 / hourTotalAllInterests;
   let hourDanger = 'none';
   if (hourPercent < 10) {
@@ -83,16 +96,20 @@ const AnalyticsDetails = ({ allInterestEvents, interestEvents, startAt, endAt })
 };
 
 AnalyticsDetails.propTypes = {
-  allInterestEvents: PropTypes.arrayOf(PropTypes.shape({
-    completedAt:PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    fulfillment: PropTypes.number.isRequired
-  }).isRequired).isRequired,
-  interestEvents: PropTypes.arrayOf(PropTypes.shape({
-    completedAt:PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    fulfillment: PropTypes.number.isRequired
-  }).isRequired).isRequired,
+  allInterestEvents: PropTypes.arrayOf(
+    PropTypes.shape({
+      completedAt: PropTypes.string.isRequired,
+      duration: PropTypes.number.isRequired,
+      fulfillment: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired,
+  interestEvents: PropTypes.arrayOf(
+    PropTypes.shape({
+      completedAt: PropTypes.string.isRequired,
+      duration: PropTypes.number.isRequired,
+      fulfillment: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired,
   startAt: PropTypes.string.isRequired,
   endAt: PropTypes.string
 };

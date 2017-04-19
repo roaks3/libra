@@ -6,8 +6,6 @@ const mapStateToProps = (state, ownProps) => ({
   interests: getInterestsForGroup(state, ownProps)
 });
 
-const BudgetInterestListForGroup = connect(
-  mapStateToProps
-)(BudgetInterestList);
+const BudgetInterestListForGroup = connect(mapStateToProps)(BudgetInterestList);
 
 export default BudgetInterestListForGroup;

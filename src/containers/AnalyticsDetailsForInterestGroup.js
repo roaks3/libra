@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 import {
-  getInterestEventsForInterestGroupInRange, getInterestEventsInRange,
-  getStartOfActivityRange, getEndOfActivityRange
+  getInterestEventsForInterestGroupInRange,
+  getInterestEventsInRange,
+  getStartOfActivityRange,
+  getEndOfActivityRange
 } from '../store/InterestEvent/selectors';
 import AnalyticsDetails from '../components/AnalyticsDetails';
 
@@ -12,8 +14,8 @@ const mapStateToProps = (state, ownProps) => ({
   endAt: getEndOfActivityRange(state, ownProps)
 });
 
-const AnalyticsDetailsForInterestGroup = connect(
-  mapStateToProps
-)(AnalyticsDetails);
+const AnalyticsDetailsForInterestGroup = connect(mapStateToProps)(
+  AnalyticsDetails
+);
 
 export default AnalyticsDetailsForInterestGroup;

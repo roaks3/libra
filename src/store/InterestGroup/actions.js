@@ -18,5 +18,11 @@ export const fetchInterestGroups = () => dispatch => {
   dispatch(requestInterestGroups());
   return fetch(resourceUrl(RESOURCE_NAME), options)
     .then(response => response.json())
-    .then(json => dispatch(receiveInterestGroups(json.map(post => Object.assign(post, {id: post._id.$oid})))));
+    .then(json =>
+      dispatch(
+        receiveInterestGroups(
+          json.map(post => Object.assign(post, { id: post._id.$oid }))
+        )
+      )
+    );
 };

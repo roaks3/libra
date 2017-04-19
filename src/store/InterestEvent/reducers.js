@@ -1,7 +1,9 @@
 import moment from 'moment';
 import {
-  REQUEST_INTEREST_EVENTS, RECEIVE_INTEREST_EVENTS,
-  LOG_INTEREST_EVENT_REQUEST, LOG_INTEREST_EVENT_SUCCESS,
+  REQUEST_INTEREST_EVENTS,
+  RECEIVE_INTEREST_EVENTS,
+  LOG_INTEREST_EVENT_REQUEST,
+  LOG_INTEREST_EVENT_SUCCESS,
   INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT
 } from './actions';
 
@@ -48,9 +50,14 @@ export default (state = initialState, action) => {
     case INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT:
       return {
         ...state,
-        defautInterestEventCompletedAt: moment(state.defautInterestEventCompletedAt).add(1, 'days').utc().format()
+        defautInterestEventCompletedAt: moment(
+          state.defautInterestEventCompletedAt
+        )
+          .add(1, 'days')
+          .utc()
+          .format()
       };
     default:
       return state;
   }
-}
+};

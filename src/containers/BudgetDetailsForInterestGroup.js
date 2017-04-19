@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import {
   getInterestEventsForInterestGroupInRange,
-  getStartOfActivityRange, getEndOfActivityRange
+  getStartOfActivityRange,
+  getEndOfActivityRange
 } from '../store/InterestEvent/selectors';
 import BudgetDetails from '../components/BudgetDetails';
 
@@ -11,8 +12,6 @@ const mapStateToProps = (state, ownProps) => ({
   endAt: getEndOfActivityRange(state, ownProps)
 });
 
-const BudgetDetailsForInterestGroup = connect(
-  mapStateToProps
-)(BudgetDetails);
+const BudgetDetailsForInterestGroup = connect(mapStateToProps)(BudgetDetails);
 
 export default BudgetDetailsForInterestGroup;

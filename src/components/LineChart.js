@@ -43,7 +43,13 @@ const LineChart = ({ values }) => {
     <ul className={css(styles.lineChart)}>
       {values.map((value, index) => {
         return (
-          <li key={index} className={css(styles.square, styles[categoriesByValue[value] || 'high'])}></li>
+          <li
+            key={index}
+            className={css(
+              styles.square,
+              styles[categoriesByValue[value] || 'high']
+            )}
+          />
         );
       })}
     </ul>

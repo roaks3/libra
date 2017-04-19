@@ -6,9 +6,6 @@ import rootReducer from './reducer.js';
 export default history => {
   return createStore(
     rootReducer,
-    applyMiddleware(
-      thunk,
-      routerMiddleware(history)
-    )
+    applyMiddleware(thunk, routerMiddleware(history))
   );
 };

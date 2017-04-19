@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
-import BudgetDetailsForInterestGroup from '../containers/BudgetDetailsForInterestGroup';
-import BudgetInterestListForGroup from '../containers/BudgetInterestListForGroup';
+import BudgetDetailsForInterestGroup
+  from '../containers/BudgetDetailsForInterestGroup';
+import BudgetInterestListForGroup
+  from '../containers/BudgetInterestListForGroup';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const styles = StyleSheet.create({
@@ -33,9 +35,7 @@ const BudgetInterestGroupListItem = ({ interestGroup }) => {
           numDays={28}
         />
       </header>
-      <BudgetInterestListForGroup
-        interestGroup={interestGroup}
-      />
+      <BudgetInterestListForGroup interestGroup={interestGroup} />
     </li>
   );
 };

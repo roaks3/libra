@@ -10,38 +10,39 @@ const styles = StyleSheet.create({
 });
 
 class InterestEventForm extends Component {
-
   static propTypes = {
     defaultCompletedAt: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
-  }
+  };
 
   state = {
-    completedAt: moment(this.props.defaultCompletedAt).utc().format('YYYY-MM-DD'),
+    completedAt: moment(this.props.defaultCompletedAt)
+      .utc()
+      .format('YYYY-MM-DD'),
     duration: 1,
     fulfillment: 1
-  }
+  };
 
   handleCompletedAtChange = e => {
     this.setState({ ...this.state, completedAt: e.target.value });
-  }
+  };
 
   handleDurationChange = e => {
     this.setState({ ...this.state, duration: parseInt(e.target.value, 10) });
-  }
+  };
 
   handleFulfillmentChange = e => {
     this.setState({ ...this.state, fulfillment: parseInt(e.target.value, 10) });
-  }
+  };
 
   handleSubmit = e => {
     this.props.onSubmit({
       ...this.state,
       completedAt: moment(this.state.completedAt, 'YYYY-MM-DD').utc().format()
     });
-  }
+  };
 
-  render () {
+  render() {
     return (
       <form className={'basic-form ' + css(styles.form)}>
         <fieldset>
@@ -78,7 +79,8 @@ class InterestEventForm extends Component {
         <button
           className="btn-primary"
           type="button"
-          onClick={this.handleSubmit}>
+          onClick={this.handleSubmit}
+        >
           Log Event
         </button>
       </form>

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import AnalyticsInterestGroupList from '../../components/AnalyticsInterestGroupList';
+import AnalyticsInterestGroupList
+  from '../../components/AnalyticsInterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
 import { fetchInterests } from '../../store/Interest/actions';
 import { fetchInterestEvents } from '../../store/InterestEvent/actions';
@@ -10,10 +11,12 @@ class AnalyticsScreen extends Component {
     fetchInterestGroups: PropTypes.func.isRequired,
     fetchInterests: PropTypes.func.isRequired,
     fetchInterestEvents: PropTypes.func.isRequired,
-    interestGroups: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    }).isRequired).isRequired
+    interestGroups: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
+      }).isRequired
+    ).isRequired
   };
 
   componentWillMount() {
@@ -22,7 +25,7 @@ class AnalyticsScreen extends Component {
     this.props.fetchInterestEvents();
   }
 
-  render () {
+  render() {
     return (
       <section>
         <AnalyticsInterestGroupList
@@ -33,15 +36,12 @@ class AnalyticsScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   interestGroups: state.interestGroups
 });
 
-export default connect(
-  mapStateToProps,
-  {
-    fetchInterestGroups,
-    fetchInterests,
-    fetchInterestEvents
-  }
-)(AnalyticsScreen);
+export default connect(mapStateToProps, {
+  fetchInterestGroups,
+  fetchInterests,
+  fetchInterestEvents
+})(AnalyticsScreen);

@@ -26,20 +26,18 @@ const InterestEventLineChart = ({ interestEvents, startAt, endAt }) => {
 
   return (
     <div>
-      <LineChartMonthLabel
-        utcDateStrings={utcDateStrings}
-      />
-      <LineChart
-        values={lineChartValues}
-      />
+      <LineChartMonthLabel utcDateStrings={utcDateStrings} />
+      <LineChart values={lineChartValues} />
     </div>
   );
 };
 
 InterestEventLineChart.propTypes = {
-  interestEvents: PropTypes.arrayOf(PropTypes.shape({
-    completedAt:PropTypes.string.isRequired
-  }).isRequired).isRequired,
+  interestEvents: PropTypes.arrayOf(
+    PropTypes.shape({
+      completedAt: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired,
   startAt: PropTypes.string.isRequired,
   endAt: PropTypes.string
 };

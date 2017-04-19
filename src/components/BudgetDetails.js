@@ -30,7 +30,10 @@ const styles = StyleSheet.create({
 });
 
 const BudgetDetails = ({ interestEvents, startAt, endAt }) => {
-  const fulfillmentTotal = interestEvents.reduce((sum, event) => sum + event.fulfillment, 0);
+  const fulfillmentTotal = interestEvents.reduce(
+    (sum, event) => sum + event.fulfillment,
+    0
+  );
   let fulfillmentLevel = 'none';
   if (fulfillmentTotal >= 30) {
     fulfillmentLevel = 'high';
@@ -40,7 +43,10 @@ const BudgetDetails = ({ interestEvents, startAt, endAt }) => {
     fulfillmentLevel = 'low';
   }
 
-  const hourTotal = interestEvents.reduce((sum, event) => sum + event.duration, 0);
+  const hourTotal = interestEvents.reduce(
+    (sum, event) => sum + event.duration,
+    0
+  );
 
   return (
     <div className={css(styles.budgetDetails)}>
@@ -66,11 +72,13 @@ const BudgetDetails = ({ interestEvents, startAt, endAt }) => {
 };
 
 BudgetDetails.propTypes = {
-  interestEvents: PropTypes.arrayOf(PropTypes.shape({
-    completedAt:PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    fulfillment: PropTypes.number.isRequired
-  }).isRequired).isRequired,
+  interestEvents: PropTypes.arrayOf(
+    PropTypes.shape({
+      completedAt: PropTypes.string.isRequired,
+      duration: PropTypes.number.isRequired,
+      fulfillment: PropTypes.number.isRequired
+    }).isRequired
+  ).isRequired,
   startAt: PropTypes.string.isRequired,
   endAt: PropTypes.string
 };

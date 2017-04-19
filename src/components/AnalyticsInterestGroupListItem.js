@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import AnalyticsDetailsForInterestGroup from '../containers/AnalyticsDetailsForInterestGroup';
+import AnalyticsDetailsForInterestGroup
+  from '../containers/AnalyticsDetailsForInterestGroup';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const styles = StyleSheet.create({

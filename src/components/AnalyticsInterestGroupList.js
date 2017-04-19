@@ -17,10 +17,12 @@ const AnalyticsInterestGroupList = ({ interestGroups }) => {
 };
 
 AnalyticsInterestGroupList.propTypes = {
-  interestGroups: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired).isRequired
+  interestGroups: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default AnalyticsInterestGroupList;
