@@ -1,6 +1,5 @@
-const apiKey = 'vRuA7T2f300-GJDEzgMWv1_aCNiL4Lyv';
-const baseUrl =
-  'https://api.mlab.com/api/1/databases/heroku_txlwplj5/collections';
+const apiKey = process.env.REACT_APP_API_KEY;
+const baseUrl = process.env.REACT_APP_API_URL;
 
 export const resourceUrl = resource =>
   `${baseUrl}/${resource}?apiKey=${apiKey}`;
