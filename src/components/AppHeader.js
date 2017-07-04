@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../logo.svg';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const styles = StyleSheet.create({
@@ -9,10 +8,6 @@ const styles = StyleSheet.create({
     color: 'white',
     lineHeight: '2em',
     textAlign: 'center'
-  },
-
-  logo: {
-    height: '80px'
   },
 
   link: {
@@ -35,7 +30,6 @@ const styles = StyleSheet.create({
 const AppHeader = () => {
   return (
     <div className={css(styles.appHeader)}>
-      <img src={logo} className={css(styles.logo)} alt="logo" />
       <h2>
         Libra
       </h2>
