@@ -1,6 +1,7 @@
 import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Header from '../../components/Header';
 import BudgetInterestGroupList from '../../components/BudgetInterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
 import { fetchInterests } from '../../store/Interest/actions';
@@ -43,6 +44,7 @@ class BudgetScreen extends Component {
         <p>
           {this.props.successMessage}
         </p>
+        <Header />
         <BudgetInterestGroupList interestGroups={this.props.interestGroups} />
       </section>
     );
