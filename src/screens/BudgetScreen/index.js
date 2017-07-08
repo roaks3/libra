@@ -1,6 +1,6 @@
-import moment from 'moment';
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import DaySelect from '../../components/DaySelect';
 import Header from '../../components/Header';
 import BudgetInterestGroupList from '../../components/BudgetInterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
@@ -33,18 +33,14 @@ class BudgetScreen extends Component {
   render() {
     return (
       <section>
-        {this.props.defautInterestEventCompletedAt &&
-          <button onClick={this.props.incrementDefautInterestEventCompletedAt}>
-            {moment(this.props.defautInterestEventCompletedAt)
-              .utc()
-              .format('ddd MM-DD')}
-            {' '}
-            - Next Day
-          </button>}
+        <Header />
+        <DaySelect
+          date={this.props.defautInterestEventCompletedAt}
+          onIncrementDay={this.props.incrementDefautInterestEventCompletedAt}
+        />
         <p>
           {this.props.successMessage}
         </p>
-        <Header />
         <BudgetInterestGroupList interestGroups={this.props.interestGroups} />
       </section>
     );
