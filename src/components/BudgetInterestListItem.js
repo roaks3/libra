@@ -44,7 +44,7 @@ class BudgetInterestListItem extends Component {
   };
 
   handleClick = e => {
-    this.setState({ visible: !this.state.visible });
+    this.setState(prevState => ({ visible: !prevState.visible }));
   };
 
   logEvent = interestEvent => {

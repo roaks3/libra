@@ -24,15 +24,15 @@ class InterestEventForm extends Component {
   };
 
   handleCompletedAtChange = e => {
-    this.setState({ ...this.state, completedAt: e.target.value });
+    this.setState({ completedAt: e.target.value });
   };
 
   handleDurationChange = e => {
-    this.setState({ ...this.state, duration: parseInt(e.target.value, 10) });
+    this.setState({ duration: parseInt(e.target.value, 10) });
   };
 
   handleFulfillmentChange = e => {
-    this.setState({ ...this.state, fulfillment: parseInt(e.target.value, 10) });
+    this.setState({ fulfillment: parseInt(e.target.value, 10) });
   };
 
   handleSubmit = e => {
