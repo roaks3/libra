@@ -56,7 +56,7 @@ const DaySelect = ({ date, onIncrementDay }) => {
 
 DaySelect.propTypes = {
   date: PropTypes.string.isRequired,
-  onIncrementDay: PropTypes.function
+  onIncrementDay: PropTypes.func
 };
 
 export default DaySelect;
