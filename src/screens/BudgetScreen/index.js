@@ -34,10 +34,11 @@ class BudgetScreen extends Component {
     return (
       <section>
         <Header />
-        <DaySelect
-          date={this.props.defautInterestEventCompletedAt}
-          onIncrementDay={this.props.incrementDefautInterestEventCompletedAt}
-        />
+        {this.props.defautInterestEventCompletedAt &&
+          <DaySelect
+            date={this.props.defautInterestEventCompletedAt}
+            onIncrementDay={this.props.incrementDefautInterestEventCompletedAt}
+          />}
         <p>
           {this.props.successMessage}
         </p>
