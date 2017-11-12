@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import InterestEventLineChart from './InterestEventLineChart.js';
+import FulfillmentSummary from './FulfillmentSummary.js';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const styles = StyleSheet.create({
@@ -16,18 +17,6 @@ const styles = StyleSheet.create({
     padding: '0 5px'
   },
 
-  low: {
-    backgroundColor: '#c6e48b'
-  },
-
-  medium: {
-    backgroundColor: '#7bc96f'
-  },
-
-  high: {
-    backgroundColor: '#239a3b'
-  },
-
   warning: {
     color: 'orange'
   },
@@ -41,21 +30,9 @@ const AnalyticsDetails = ({
   allInterestEvents,
   interestEvents,
   startAt,
-  endAt
+  endAt,
+  fulfillmentSummary
 }) => {
-  const fulfillmentTotal = interestEvents.reduce(
-    (sum, event) => sum + event.fulfillment,
-    0
-  );
-  let fulfillmentLevel = 'none';
-  if (fulfillmentTotal >= 30) {
-    fulfillmentLevel = 'high';
-  } else if (fulfillmentTotal >= 20) {
-    fulfillmentLevel = 'medium';
-  } else if (fulfillmentTotal >= 10) {
-    fulfillmentLevel = 'low';
-  }
-
   const hourTotal = interestEvents.reduce(
     (sum, event) => sum + event.duration,
     0
@@ -74,12 +51,7 @@ const AnalyticsDetails = ({
 
   return (
     <div className={css(styles.analyticsDetails)}>
-      <div className={css(styles[fulfillmentLevel])}>
-        <span className={css(styles.statValue)}>
-          {fulfillmentTotal}
-        </span>
-        pts
-      </div>
+      <FulfillmentSummary fulfillmentSummary={fulfillmentSummary}/>
       <div className={css(styles[hourDanger])}>
         <span className={css(styles.statValue)}>
           {hourPercent.toFixed()}%
@@ -111,7 +83,12 @@ AnalyticsDetails.propTypes = {
     }).isRequired
   ).isRequired,
   startAt: PropTypes.string.isRequired,
-  endAt: PropTypes.string
+  endAt: PropTypes.string,
+  fulfillmentSummary: PropTypes.shape({
+    value: PropTypes.number,
+    level: PropTypes.string,
+    message: PropTypes.any
+  })
 };
 
 export default AnalyticsDetails;

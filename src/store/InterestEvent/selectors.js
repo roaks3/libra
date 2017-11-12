@@ -1,6 +1,42 @@
 import moment from 'moment';
 import { getInterestsForGroup } from '../Interest/selectors';
 
+const calculateFulfillmentSummary = (interestEvents, groupingLabel) => {
+  const value = interestEvents.reduce(
+    (sum, event) => sum + event.fulfillment,
+    0
+  );
+
+  if (value >= 30) {
+    return {
+      value,
+      level: 'high'
+    };
+  } else if (value >= 20) {
+    return {
+      value,
+      level: 'medium'
+    };
+  } else if (value >= 10) {
+    return {
+      value,
+      level: 'low',
+      message: {
+        text: `In danger of not doing enough ${groupingLabel}`,
+        severity: 'warning'
+      }
+    };
+  }
+  return {
+    value,
+    level: 'none',
+    message: {
+      text: `You should really do more ${groupingLabel}`,
+      severity: 'error'
+    }
+  };
+};
+
 export const getEndOfActivityRange = (state, props) => {
   return state.interestEvent.defautInterestEventCompletedAt;
 };
@@ -30,6 +66,23 @@ export const getInterestEventsForInterestGroup = (state, props) => {
   return state.interestEvent.interestEvents.filter(interestEvent =>
     interestIds.includes(interestEvent.interestId)
   );
+};
+
+export const getInterestEventsByInterestGroupId = (state, props) => {
+  const interestGroupIdsByInterestId = state.interests.reduce(
+    (memo, interest) => {
+      memo[interest.id] = interest.interestGroupId;
+      return memo;
+    },
+    {}
+  );
+  return state.interestEvent.interestEvents.reduce((memo, interestEvent) => {
+    const interestGroupId =
+      interestGroupIdsByInterestId[interestEvent.interestId];
+    memo[interestGroupId] = memo[interestGroupId] || [];
+    memo[interestGroupId].push(interestEvent);
+    return memo;
+  }, {});
 };
 
 export const getInterestEventsInRange = (state, props) => {
@@ -69,4 +122,35 @@ export const getInterestEventsForInterestGroupInRange = (state, props) => {
       rangeEndMoment.diff(moment(interestEvent.completedAt), 'days') < numDays
     );
   });
+};
+
+export const getInterestEventsByInterestGroupIdInRange = (state, props) => {
+  const rangeStart = getStartOfActivityRange(state, props);
+  const rangeEnd = getEndOfActivityRange(state, props);
+  const rangeEndMoment = rangeEnd ? moment(rangeEnd) : moment();
+  const numDays = rangeEndMoment.diff(moment(rangeStart), 'days');
+  return Object.entries(
+    getInterestEventsByInterestGroupId(state, props)
+  ).reduce((memo, [key, val]) => {
+    memo[key] = val.filter(interestEvent => {
+      return (
+        rangeEndMoment.diff(moment(interestEvent.completedAt), 'days') < numDays
+      );
+    });
+    return memo;
+  }, {});
+};
+
+export const getFulfillmentSummaryForInterestGroupInRange = (state, props) => {
+  return calculateFulfillmentSummary(
+    getInterestEventsForInterestGroupInRange(state, props),
+    props.interestGroup.name
+  );
+};
+
+export const getFulfillmentSummaryForInterestInRange = (state, props) => {
+  return calculateFulfillmentSummary(
+    getInterestEventsForInterestInRange(state, props),
+    props.interest.name
+  );
 };
