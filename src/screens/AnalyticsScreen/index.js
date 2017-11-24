@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from '../../components/Header';
+import FeedbackListForAll from '../../containers/FeedbackListForAll';
 import AnalyticsInterestGroupList
   from '../../components/AnalyticsInterestGroupList';
 import { fetchInterestGroups } from '../../store/InterestGroup/actions';
@@ -30,6 +31,7 @@ class AnalyticsScreen extends Component {
     return (
       <section>
         <Header />
+        <FeedbackListForAll numDays={42} />
         <AnalyticsInterestGroupList
           interestGroups={this.props.interestGroups}
         />

@@ -154,3 +154,17 @@ export const getFulfillmentSummaryForInterestInRange = (state, props) => {
     props.interest.name
   );
 };
+
+export const getFeedbackMessagesInRange = (state, props) => {
+  const interestEventsByInterestGroupId = getInterestEventsByInterestGroupIdInRange(state, props);
+  const interestGroupsById = state.interestGroups.reduce((memo, interestGroup) => {
+    memo[interestGroup.id] = interestGroup;
+    return memo;
+  }, {});
+  return Object.entries(interestEventsByInterestGroupId).map(([interestGroupId, interestEvents]) => {
+    if (!interestGroupsById[interestGroupId]) {
+      return null;
+    }
+    return calculateFulfillmentSummary(interestEvents, interestGroupsById[interestGroupId].name).message;
+  }).filter(message => message);
+};
