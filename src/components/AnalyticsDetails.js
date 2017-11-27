@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import InterestEventLineChart from './InterestEventLineChart.js';
 import FulfillmentSummary from './FulfillmentSummary.js';
 import { StyleSheet, css } from 'aphrodite/no-important';

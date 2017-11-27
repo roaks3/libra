@@ -2,19 +2,18 @@
   "name": "libra",
   "version": "0.1.0",
   "private": true,
-  "devDependencies": {
-    "react-scripts": "0.9.5"
-  },
   "dependencies": {
-    "aphrodite": "^1.2.0",
+    "aphrodite": "^1.2.5",
     "moment": "^2.15.2",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "react-redux": "^4.4.5",
-    "react-router-dom": "^4.0.0",
-    "react-router-redux": "^5.0.0-alpha.4",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.1.0"
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.8",
+    "react-scripts": "1.0.17",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
