@@ -20,7 +20,7 @@ export const receiveInterestEvents = interestEvents => ({
 
 export const fetchInterestEvents = () => dispatch => {
   dispatch(requestInterestEvents());
-  return fetch(resourceUrl(RESOURCE_NAME), options)
+  return fetch(resourceUrl(RESOURCE_NAME) + '&l=2000', options)
     .then(response => response.json())
     .then(json =>
       dispatch(
