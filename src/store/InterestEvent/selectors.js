@@ -38,7 +38,7 @@ const calculateFulfillmentSummary = (interestEvents, groupingLabel) => {
 };
 
 export const getEndOfActivityRange = (state, props) => {
-  return state.interestEvent.defautInterestEventCompletedAt;
+  return state.interestEvent.defautInterestEventCompletedOn;
 };
 
 export const getStartOfActivityRange = (state, props) => {
@@ -92,7 +92,7 @@ export const getInterestEventsInRange = (state, props) => {
   const numDays = rangeEndMoment.diff(moment(rangeStart), 'days');
   return state.interestEvent.interestEvents.filter(interestEvent => {
     return (
-      rangeEndMoment.diff(moment(interestEvent.completedAt), 'days') < numDays
+      rangeEndMoment.diff(moment(interestEvent.completedOn), 'days') < numDays
     );
   });
 };
@@ -104,7 +104,7 @@ export const getInterestEventsForInterestInRange = (state, props) => {
   const numDays = rangeEndMoment.diff(moment(rangeStart), 'days');
   return getInterestEventsForInterest(state, props).filter(interestEvent => {
     return (
-      rangeEndMoment.diff(moment(interestEvent.completedAt), 'days') < numDays
+      rangeEndMoment.diff(moment(interestEvent.completedOn), 'days') < numDays
     );
   });
 };
@@ -119,7 +119,7 @@ export const getInterestEventsForInterestGroupInRange = (state, props) => {
     props
   ).filter(interestEvent => {
     return (
-      rangeEndMoment.diff(moment(interestEvent.completedAt), 'days') < numDays
+      rangeEndMoment.diff(moment(interestEvent.completedOn), 'days') < numDays
     );
   });
 };
@@ -134,7 +134,7 @@ export const getInterestEventsByInterestGroupIdInRange = (state, props) => {
   ).reduce((memo, [key, val]) => {
     memo[key] = val.filter(interestEvent => {
       return (
-        rangeEndMoment.diff(moment(interestEvent.completedAt), 'days') < numDays
+        rangeEndMoment.diff(moment(interestEvent.completedOn), 'days') < numDays
       );
     });
     return memo;

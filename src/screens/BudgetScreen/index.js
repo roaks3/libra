@@ -8,7 +8,7 @@ import { fetchInterestGroups } from '../../store/InterestGroup/actions';
 import { fetchInterests } from '../../store/Interest/actions';
 import {
   fetchInterestEvents,
-  incrementDefautInterestEventCompletedAt
+  incrementDefautInterestEventCompletedOn
 } from '../../store/InterestEvent/actions';
 
 class BudgetScreen extends Component {
@@ -35,10 +35,10 @@ class BudgetScreen extends Component {
     return (
       <section>
         <Header />
-        {this.props.defautInterestEventCompletedAt &&
+        {this.props.defautInterestEventCompletedOn &&
           <DaySelect
-            date={this.props.defautInterestEventCompletedAt}
-            onIncrementDay={this.props.incrementDefautInterestEventCompletedAt}
+            date={this.props.defautInterestEventCompletedOn}
+            onIncrementDay={this.props.incrementDefautInterestEventCompletedOn}
           />}
         <p>
           {this.props.successMessage}
@@ -50,8 +50,8 @@ class BudgetScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  defautInterestEventCompletedAt: state.interestEvent
-    .defautInterestEventCompletedAt,
+  defautInterestEventCompletedOn: state.interestEvent
+    .defautInterestEventCompletedOn,
   successMessage: state.interestEvent.successMessage,
   interestGroups: state.interestGroups
 });
@@ -60,5 +60,5 @@ export default connect(mapStateToProps, {
   fetchInterestGroups,
   fetchInterests,
   fetchInterestEvents,
-  incrementDefautInterestEventCompletedAt
+  incrementDefautInterestEventCompletedOn
 })(BudgetScreen);

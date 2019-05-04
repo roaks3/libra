@@ -17,7 +17,7 @@ const InterestEventLineChart = ({ interestEvents, startAt, endAt }) => {
 
   const lineChartValues = interestEvents
     .reduce((memo, interestEvent) => {
-      const daysAgo = endMoment.diff(moment(interestEvent.completedAt), 'days');
+      const daysAgo = endMoment.diff(moment(interestEvent.completedOn), 'days');
       if (daysAgo < numDays) {
         memo[daysAgo]++;
       }
@@ -36,7 +36,7 @@ const InterestEventLineChart = ({ interestEvents, startAt, endAt }) => {
 InterestEventLineChart.propTypes = {
   interestEvents: PropTypes.arrayOf(
     PropTypes.shape({
-      completedAt: PropTypes.string.isRequired
+      completedOn: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
   startAt: PropTypes.string.isRequired,

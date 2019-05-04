@@ -12,20 +12,20 @@ const styles = StyleSheet.create({
 
 class InterestEventForm extends Component {
   static propTypes = {
-    defaultCompletedAt: PropTypes.string,
+    defaultCompletedOn: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
   };
 
   state = {
-    completedAt: moment(this.props.defaultCompletedAt)
+    completedOn: moment(this.props.defaultCompletedOn)
       .utc()
       .format('YYYY-MM-DD'),
     duration: 1,
     fulfillment: 1
   };
 
-  handleCompletedAtChange = e => {
-    this.setState({ completedAt: e.target.value });
+  handleCompletedOnChange = e => {
+    this.setState({ completedOn: e.target.value });
   };
 
   handleDurationChange = e => {
@@ -37,10 +37,7 @@ class InterestEventForm extends Component {
   };
 
   handleSubmit = e => {
-    this.props.onSubmit({
-      ...this.state,
-      completedAt: moment(this.state.completedAt, 'YYYY-MM-DD').utc().format()
-    });
+    this.props.onSubmit(this.state);
   };
 
   render() {
@@ -52,8 +49,8 @@ class InterestEventForm extends Component {
           </label>
           <input
             type="date"
-            value={this.state.completedAt}
-            onChange={this.handleCompletedAtChange}
+            value={this.state.completedOn}
+            onChange={this.handleCompletedOnChange}
             placeholder="YYYY-MM-DD"
           />
         </fieldset>

@@ -1,13 +1,14 @@
+import * as _ from 'lodash';
 import { resourceUrl, options } from '../../api';
 
-const RESOURCE_NAME = 'interestEvents';
+const RESOURCE_NAME = 'interest_events';
 
 export const REQUEST_INTEREST_EVENTS = 'REQUEST_INTEREST_EVENTS';
 export const RECEIVE_INTEREST_EVENTS = 'RECEIVE_INTEREST_EVENTS';
 export const LOG_INTEREST_EVENT_REQUEST = 'LOG_INTEREST_EVENT_REQUEST';
 export const LOG_INTEREST_EVENT_SUCCESS = 'LOG_INTEREST_EVENT_SUCCESS';
-export const INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT =
-  'INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT';
+export const INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_ON =
+  'INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_ON';
 
 export const requestInterestEvents = () => ({
   type: REQUEST_INTEREST_EVENTS
@@ -20,12 +21,12 @@ export const receiveInterestEvents = interestEvents => ({
 
 export const fetchInterestEvents = () => dispatch => {
   dispatch(requestInterestEvents());
-  return fetch(resourceUrl(RESOURCE_NAME) + '&l=2000', options)
+  return fetch(resourceUrl(RESOURCE_NAME), options)
     .then(response => response.json())
     .then(json =>
       dispatch(
         receiveInterestEvents(
-          json.map(post => Object.assign(post, { id: post._id.$oid }))
+          json.map(result => _.mapKeys(result, (val, key) => _.camelCase(key)))
         )
       )
     );
@@ -46,12 +47,12 @@ export const logInterestEvent = (interestEvent, interest) => dispatch => {
   return fetch(resourceUrl(RESOURCE_NAME), {
     ...options,
     method: 'POST',
-    body: JSON.stringify(interestEvent)
+    body: JSON.stringify(_.mapKeys(interestEvent, (val, key) => _.snakeCase(key)))
   }).then(() => {
     dispatch(logInterestEventSuccess(interestEvent, interest));
   });
 };
 
-export const incrementDefautInterestEventCompletedAt = () => ({
-  type: INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT
+export const incrementDefautInterestEventCompletedOn = () => ({
+  type: INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_ON
 });

@@ -71,14 +71,14 @@ const AnalyticsDetails = ({
 AnalyticsDetails.propTypes = {
   allInterestEvents: PropTypes.arrayOf(
     PropTypes.shape({
-      completedAt: PropTypes.string.isRequired,
+      completedOn: PropTypes.string.isRequired,
       duration: PropTypes.number.isRequired,
       fulfillment: PropTypes.number.isRequired
     }).isRequired
   ).isRequired,
   interestEvents: PropTypes.arrayOf(
     PropTypes.shape({
-      completedAt: PropTypes.string.isRequired,
+      completedOn: PropTypes.string.isRequired,
       duration: PropTypes.number.isRequired,
       fulfillment: PropTypes.number.isRequired
     }).isRequired

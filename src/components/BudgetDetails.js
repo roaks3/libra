@@ -46,7 +46,7 @@ const BudgetDetails = ({ interestEvents, startAt, endAt, fulfillmentSummary }) =
 BudgetDetails.propTypes = {
   interestEvents: PropTypes.arrayOf(
     PropTypes.shape({
-      completedAt: PropTypes.string.isRequired,
+      completedOn: PropTypes.string.isRequired,
       duration: PropTypes.number.isRequired,
       fulfillment: PropTypes.number.isRequired
     }).isRequired

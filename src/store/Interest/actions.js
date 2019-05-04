@@ -1,3 +1,4 @@
+import * as _ from 'lodash';
 import { resourceUrl, options } from '../../api';
 
 const RESOURCE_NAME = 'interests';
@@ -21,7 +22,7 @@ export const fetchInterests = () => dispatch => {
     .then(json =>
       dispatch(
         receiveInterests(
-          json.map(post => Object.assign(post, { id: post._id.$oid }))
+          json.map(result => _.mapKeys(result, (val, key) => _.camelCase(key)))
         )
       )
     );

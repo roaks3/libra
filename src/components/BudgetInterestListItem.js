@@ -58,13 +58,13 @@ class BudgetInterestListItem extends Component {
   };
 
   render() {
-    const { interest, defautInterestEventCompletedAt } = this.props;
+    const { interest, defautInterestEventCompletedOn } = this.props;
 
     let form;
     if (this.state.visible) {
       form = (
         <InterestEventForm
-          defaultCompletedAt={defautInterestEventCompletedAt}
+          defaultCompletedOn={defautInterestEventCompletedOn}
           onSubmit={this.logEvent}
         />
       );
@@ -90,8 +90,8 @@ class BudgetInterestListItem extends Component {
 }
 
 const mapStateToProps = state => ({
-  defautInterestEventCompletedAt: state.interestEvent
-    .defautInterestEventCompletedAt
+  defautInterestEventCompletedOn: state.interestEvent
+    .defautInterestEventCompletedOn
 });
 
 export default connect(mapStateToProps, {

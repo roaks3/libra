@@ -4,12 +4,12 @@ import {
   RECEIVE_INTEREST_EVENTS,
   LOG_INTEREST_EVENT_REQUEST,
   LOG_INTEREST_EVENT_SUCCESS,
-  INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT
+  INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_ON
 } from './actions';
 
 const mostRecentInterestEvent = interestEvents => {
   return interestEvents.reduce((memo, interestEvent) => {
-    if (!memo || interestEvent.completedAt > memo.completedAt) {
+    if (!memo || interestEvent.completedOn > memo.completedOn) {
       return interestEvent;
     }
     return memo;
@@ -19,7 +19,7 @@ const mostRecentInterestEvent = interestEvents => {
 const initialState = {
   interestEvents: [],
   successMessage: null,
-  defautInterestEventCompletedAt: null
+  defautInterestEventCompletedOn: null
 };
 
 export default (state = initialState, action) => {
@@ -34,7 +34,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         interestEvents: action.interestEvents,
-        defautInterestEventCompletedAt: mostRecent && mostRecent.completedAt
+        defautInterestEventCompletedOn: mostRecent && mostRecent.completedOn
       };
     case LOG_INTEREST_EVENT_REQUEST:
       return {
@@ -47,11 +47,11 @@ export default (state = initialState, action) => {
         interestEvents: [...state.interestEvents, action.interestEvent],
         successMessage: `Logged event: ${action.interest.name}`
       };
-    case INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_AT:
+    case INCREMENT_DEFAULT_INTEREST_EVENT_COMPLETED_ON:
       return {
         ...state,
-        defautInterestEventCompletedAt: moment(
-          state.defautInterestEventCompletedAt
+        defautInterestEventCompletedOn: moment(
+          state.defautInterestEventCompletedOn
         )
           .add(1, 'days')
           .utc()
